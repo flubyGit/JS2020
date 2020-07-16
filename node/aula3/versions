@@ -1,0 +1,11 @@
+^ = minor patch
+~ = patch
+
+
+
+2.        1.      0
+major   minor    patch
+
+Patch = correção de bug
+Minor = Adição de recursos
+Major = Compatibilidade de versões anteriores pode quebrar

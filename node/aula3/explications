@@ -1,0 +1,21 @@
+npm i pkg - Instalar pacote
+
+npm i pkg@versao - Instalar pacote com a versao exata
+
+npm install pkg - Instalar pacote 
+
+npm i pkg --save - Instalar pacote como dependencia [ salvará no package.json | dependencies]
+
+npm i pkg --save-prod - Instalar pacote como dependencia [ salvará no package.json | dependencies]
+
+npm i pkg --save-dev - Instalar pacote como dependencia de desenvolvimento [ salvará no package.json | devDependencies ]
+
+npm i pkg --save-dev -E - Instalar pacote como dependencia de desenvolvimento na versão exata [ salvará no package.json | devDependencies ]
+
+npm update - Atualizar pacotes [ se a flag -E(exact) no foi passada no pkg, nao atualizará]
+
+npm uninstall express - Desistalar um pacote
+
+npm ls - Listar dependencias
+
+npm ls --depth=0
