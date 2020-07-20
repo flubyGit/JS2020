@@ -1,3 +1,7 @@
+/**
+ * Revisão arrays - Aula 76
+ */
+
 const nomes = ['Eduardo','Maria','Joana']
 const newArr = nomes
 const spread = [...nomes]
