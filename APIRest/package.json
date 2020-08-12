@@ -1,16 +1,24 @@
 {
   "name": "api_rest",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "author": {
     "email": "profissionalf.andre@gmail.com",
     "url": "https://github.com/flubyGit",
     "name": "Felipe"
   },
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0"
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
