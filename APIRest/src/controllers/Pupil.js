@@ -3,7 +3,6 @@ import Pupil from '../models/Pupil';
 class PupilController {
   async index(req, res) {
     const pupils = await Pupil.findAll();
-    console.log(pupils);
     return res.json(pupils);
   }
 
