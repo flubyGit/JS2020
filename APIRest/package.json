@@ -12,7 +12,9 @@
     "dev": "nodemon server.js",
     "create_migrate": "sudo npx sequelize migration:create",
     "migrate": "sudo npx sequelize db:migrate",
-    "drop_migrate": "sudo npx sequelize migration:undo"
+    "drop_migrate": "sudo npx sequelize migration:undo",
+    "create_seed": "sudo npx sequelize seed:generate",
+    "seed": "sudo npx sequelize db:seed:all"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
