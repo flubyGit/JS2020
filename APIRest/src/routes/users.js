@@ -1,19 +1,14 @@
 import { Router } from 'express';
 import UserController from '../controllers/User';
+import LoginRequired from '../middlewares/LoginRequired';
 
 const router = new Router();
 
-router.get('/', UserController.index);
+// router.get('/', LoginRequired, UserController.index);
+// router.get('/:id', UserController.show);
+
 router.post('/', UserController.store);
-router.get('/:id', UserController.show);
-router.put('/:id', UserController.update);
-router.delete('/:id', UserController.delete);
+router.put('/', LoginRequired, UserController.update);
+router.delete('/', LoginRequired, UserController.delete);
 
 export default router;
-/**
-  async index = Listar -> Get
-  async store/create = Cria um novo registro -> Post
-  async delete/destroy - Apaga um registro -> Delete
-  async show - Mostra 1 registro -> Get
-  async update - Atualiza 1 registro -> Put/Patch
- */

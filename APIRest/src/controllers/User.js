@@ -3,7 +3,7 @@ import User from '../models/User';
 class HomeController {
   async index(req, res) {
     try {
-      const allUsers = await User.findAll();
+      const allUsers = await User.findAll({ attributes: ['id', 'name', 'email'] });
       return res.json(allUsers);
     } catch (error) {
       return res.json(null);
@@ -13,7 +13,8 @@ class HomeController {
   async store(req, res) {
     try {
       const userNew = await User.create(req.body);
-      return res.json(userNew);
+      const { id, name, email } = userNew;
+      return res.json({ id, name, email });
     } catch (error) {
       const { errors } = error;
       return res.status(400).json({
@@ -24,9 +25,9 @@ class HomeController {
 
   async show(req, res) {
     try {
-      const { id } = req.params;
-      const users = await User.findByPk(id);
-      return res.json(users);
+      const users = await User.findByPk(req.params.id);
+      const { id, name, email } = users;
+      return res.json({ id, name, email });
     } catch (error) {
       return res.json(null);
     }
@@ -34,20 +35,17 @@ class HomeController {
 
   async update(req, res) {
     try {
-      const { id } = req.params;
-      const user = await User.findByPk(id);
-      if (!id) {
-        return res.status(400).json({
-          errors: ['Id missing'],
-        });
-      }
+      const user = await User.findByPk(req.userId);
+      console.log(user);
       if (!user) {
         return res.status(400).json({
           errors: ['User not exists'],
         });
       }
       const updated = await user.update(req.body);
-      return res.json(updated);
+      const { id, name, email } = updated;
+
+      return res.json({ id, name, email });
     } catch (error) {
       return res.json(null);
     }
@@ -55,19 +53,13 @@ class HomeController {
 
   async delete(req, res) {
     try {
-      const { id } = req.params;
-      const user = await User.findByPk(id);
-      if (!id) {
-        return res.status(400).json({
-          errors: ['Id missing'],
-        });
-      }
+      const user = await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ['User not exists'],
         });
       }
-      await user.destroy(id);
+      await user.destroy();
       return res.json({
         success: 'User delete success',
       });
