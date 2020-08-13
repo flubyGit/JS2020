@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "create_migrate": "sudo npx sequelize migration:create",
+    "alter_migrate": "sudo npx sequelize migration:create",
     "migrate": "sudo npx sequelize db:migrate",
     "drop_migrate": "sudo npx sequelize migration:undo",
     "create_seed": "sudo npx sequelize seed:generate",
