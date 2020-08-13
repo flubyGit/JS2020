@@ -9,7 +9,10 @@
     "name": "Felipe"
   },
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "create_migrate": "sudo npx sequelize migration:create",
+    "migrate": "sudo npx sequelize db:migrate",
+    "drop_migrate": "sudo npx sequelize migration:undo"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
@@ -20,6 +23,7 @@
     "sucrase": "^3.15.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mariadb": "^2.4.2",
