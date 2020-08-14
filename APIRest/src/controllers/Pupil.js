@@ -9,7 +9,7 @@ class PupilController {
         order: [['id', 'desc'], [Photo, 'id', 'desc']],
         include: {
           model: Photo,
-          attributes: ['filename'],
+          attributes: ['url', 'filename'],
         },
       },
     );
@@ -40,7 +40,7 @@ class PupilController {
         order: [['id', 'desc'], [Photo, 'id', 'desc']],
         include: {
           model: Photo,
-          attributes: ['filename'],
+          attributes: ['url', 'filename'],
         },
       });
       if (!pupil) {

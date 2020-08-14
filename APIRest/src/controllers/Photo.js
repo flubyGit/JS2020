@@ -14,11 +14,11 @@ class Photo {
       }
       try {
         const { originalname, filename } = req.file;
-        const { pupile_id } = req.body;
-        await PhotoModel.create({ originalname, filename, pupile_id });
-        return res.json({
-          originalname, filename, pupile_id,
+        const { pupile_id, url } = req.body;
+        const photo = await PhotoModel.create({
+          originalname, filename, pupile_id, url,
         });
+        return res.json(photo);
       } catch (e) {
         return res.status(400).json({
           errors: ['Aluno não existe'],

@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import constants from '../config/constants';
 
 export default class Photo extends Model {
   static init(sequelize) {
@@ -19,6 +20,12 @@ export default class Photo extends Model {
           notEmpty: {
             msg: 'Campo não pode ficar vazio',
           },
+        },
+      },
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${constants.url}/images/${this.getDataValue('filename')}`;
         },
       },
     }, { sequelize, tableName: 'photos' });
