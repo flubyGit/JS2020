@@ -5,3 +5,8 @@
 -> Ação [ Action ]
 
 -> Ação -> Reducer -> newState = state -> newState
+
+
+// Saga
+
+Action -> (request) -> saga -> reducer

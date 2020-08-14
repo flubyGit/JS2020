@@ -8,7 +8,7 @@ export default function Login() {
   const dispatch = useDispatch();
   function handleReduxClick(e) {
     e.preventDefault();
-    dispatch(exampleActions.clickedButton());
+    dispatch(exampleActions.clickedButtonRequest());
   }
   return (
     <Container>
