@@ -12,11 +12,18 @@ class Photo {
           errors: [error.code],
         });
       }
-      const { originalname, filename } = req.file;
-      const { pupile_id } = req.body;
-      const photo = await PhotoModel.create({ originalname, filename, pupile_id });
-
-      return res.json(photo);
+      try {
+        const { originalname, filename } = req.file;
+        const { pupile_id } = req.body;
+        await PhotoModel.create({ originalname, filename, pupile_id });
+        return res.json({
+          originalname, filename, pupile_id,
+        });
+      } catch (e) {
+        return res.status(400).json({
+          errors: ['Aluno não existe'],
+        });
+      }
     });
   }
 }

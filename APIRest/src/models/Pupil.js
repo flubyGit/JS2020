@@ -65,4 +65,8 @@ export default class Pupil extends Model {
     }, { sequelize });
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Photo, { foreignKey: 'pupile_id' });
+  }
 }

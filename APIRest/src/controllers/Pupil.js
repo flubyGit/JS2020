@@ -1,8 +1,18 @@
 import Pupil from '../models/Pupil';
+import Photo from '../models/Photo';
 
 class PupilController {
   async index(req, res) {
-    const pupils = await Pupil.findAll();
+    const pupils = await Pupil.findAll(
+      {
+        attributes: ['id', 'name', 'surname', 'email', 'age', 'weight', 'height'],
+        order: [['id', 'desc'], [Photo, 'id', 'desc']],
+        include: {
+          model: Photo,
+          attributes: ['filename'],
+        },
+      },
+    );
     return res.json(pupils);
   }
 
@@ -25,7 +35,14 @@ class PupilController {
           errors: ['Faltando id'],
         });
       }
-      const pupil = await Pupil.findByPk(id);
+      const pupil = await Pupil.findByPk(id, {
+        attributes: ['id', 'name', 'surname', 'email', 'age', 'weight', 'height'],
+        order: [['id', 'desc'], [Photo, 'id', 'desc']],
+        include: {
+          model: Photo,
+          attributes: ['filename'],
+        },
+      });
       if (!pupil) {
         return res.status(400).json({
           errors: ['Aluno não existe'],
