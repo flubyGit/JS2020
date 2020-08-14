@@ -6,6 +6,7 @@ import users from './src/routes/users';
 import tokens from './src/routes/tokens';
 import pupils from './src/routes/pupils';
 import home from './src/routes/home';
+import photo from './src/routes/photo';
 import './src/database';
 
 class App {
@@ -25,6 +26,7 @@ class App {
     this.app.use('/tokens', tokens);
     this.app.use('/pupils', pupils);
     this.app.use('/home', home);
+    this.app.use('/photos', photo);
   }
 }
 
