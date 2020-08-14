@@ -9,11 +9,7 @@ export default function Login() {
         Login
         <small>Small</small>
       </Title>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum corporis
-        quisquam illo culpa autem ipsam voluptatum maxime molestias. Quae in
-        perferendis velit veniam rem optio illo consectetur ullam laborum sint.
-      </Paragraph>
+      <Paragraph>Lorem ipsum dolor sit amet consectetur</Paragraph>
     </Container>
   );
 }
