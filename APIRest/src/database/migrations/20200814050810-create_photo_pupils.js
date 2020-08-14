@@ -1,36 +1,30 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('pupils', {
+    await queryInterface.createTable('photos', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      originalname: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      surname: {
+      filename: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      age: {
+      pupile_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      weight: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      height: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
+        allowNull: true,
+        references: {
+          model: 'pupils',
+          key: 'id',
+        },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
+
       },
       created_at: {
         type: Sequelize.DATE,
@@ -44,6 +38,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('pupils');
+    await queryInterface.dropTable('photos');
   },
 };

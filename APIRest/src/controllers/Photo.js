@@ -1,9 +1,10 @@
 import multer from 'multer';
 import multerConfig from '../config/multer';
+import PhotoModel from '../models/Photo';
 
 const upload = multer(multerConfig).single('photo');
 
-class PhotoController {
+class Photo {
   store(req, res) {
     return upload(req, res, async (error) => {
       if (error) {
@@ -11,8 +12,12 @@ class PhotoController {
           errors: [error.code],
         });
       }
-      return res.json(req.file);
+      const { originalname, filename } = req.file;
+      const { pupile_id } = req.body;
+      const photo = await PhotoModel.create({ originalname, filename, pupile_id });
+
+      return res.json(photo);
     });
   }
 }
-export default new PhotoController();
+export default new Photo();
