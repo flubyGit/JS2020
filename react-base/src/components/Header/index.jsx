@@ -18,6 +18,7 @@ export default function Header() {
       <Link to="/outra">
         <FaSignInAlt size={24} />
       </Link>
+      {buttonClicked ? <p>Ativo</p> : <p>Inativo</p>}
     </Nav>
   );
 }
