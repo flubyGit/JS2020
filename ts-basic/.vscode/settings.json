@@ -5,7 +5,7 @@
     "source.fixAll": true
   },
   "code-runner.executorMap": {
-    "typescript": "clear && npx ts-node --files --transpile-only",
+    "typescript": "npx ts-node --files",
   },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
