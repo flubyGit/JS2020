@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sudo yarn add @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
+sudo yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser -D

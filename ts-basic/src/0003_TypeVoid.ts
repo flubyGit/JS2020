@@ -10,8 +10,8 @@ const people = {
   surname: 'Otávio',
 
   showName(): void {
-    console.log(this.name.concat(this.surname))
-  }
+    console.log(this.name.concat(this.surname));
+  },
 };
 noReturn('Hi', 'People');
 console.log(people.showName());
