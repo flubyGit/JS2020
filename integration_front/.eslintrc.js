@@ -22,7 +22,7 @@ module.exports = {
     'react-hooks'
   ],
   rules: {
-    'prettier/prettier': 'error',
+    // 'prettier/prettier': ,
     'camelcase': 'off',
     'react/jsx-filename-extension': 'off',
     'import/prefer-default-export': 'off',
