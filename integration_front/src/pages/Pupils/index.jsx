@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
 import { Container } from '../../styles/GlobalStyles';
 import { PupilContainer, ProfilePicture } from './styled';
@@ -35,8 +35,12 @@ export default function Pupils() {
               )}
             <span>{pupil.name}</span>
             <span>{pupil.email}</span>
-            <FaEdit size={16} />
-            <FaWindowClose size={16} />
+            <Link to={`/pupil/${pupil.id}`}>
+              <FaEdit size={16} />
+            </Link>
+            <Link>
+              <FaWindowClose size={16} />
+            </Link>
           </div>
         ))}
       </PupilContainer>

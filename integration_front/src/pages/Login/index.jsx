@@ -2,18 +2,21 @@
 import React from 'react';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { useDispatch } from 'react-redux';
+import { get } from 'lodash';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import { schema } from './validation';
 import { loginRequest } from '../../store/modules/auth/actions';
 
-export default function Login() {
+export default function Login(props) {
   const dispatch = useDispatch();
+  const prevPath = get(props, 'location.state.prevPath', '/');
   function handleSubmitLogin(values) {
     dispatch(
       loginRequest({
         email: values.email,
         password: values.password,
+        prevPath,
       })
     );
   }

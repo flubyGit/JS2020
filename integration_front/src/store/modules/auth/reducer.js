@@ -1,6 +1,6 @@
 import * as types from '../types';
 
-const { LOGIN_REQUEST } = types;
+const { LOGIN_FAILURE, LOGIN_SUCCESS } = types;
 
 const initialState = {
   isLoggedIn: false,
@@ -11,11 +11,18 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST: {
+    case LOGIN_SUCCESS: {
       console.log('reducer', action.payload);
-      return state;
+      const newState = { ...state };
+      newState.isLoggedIn = true;
+      newState.token = action.payload.token;
+      newState.user = action.payload.user;
+      return newState;
     }
-
+    case LOGIN_FAILURE: {
+      const newState = { ...initialState };
+      return newState;
+    }
     default:
       return state;
   }
