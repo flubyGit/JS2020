@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Formik, ErrorMessage, Field } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import { schema } from './validation';
 import { loginRequest } from '../../store/modules/auth/actions';
+import Loading from '../../components/Loading';
 
 export default function Login(props) {
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const prevPath = get(props, 'location.state.prevPath', '/');
   function handleSubmitLogin(values) {
     dispatch(
@@ -22,6 +24,7 @@ export default function Login(props) {
   }
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>Login</h1>
       <Formik
         initialValues={{

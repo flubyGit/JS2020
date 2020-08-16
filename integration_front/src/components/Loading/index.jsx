@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from './styled'
+import { Container } from './styled';
 
 function Loading({ isLoading }) {
-  if (!isLoading) return <></>
+  if (!isLoading) return <></>;
   return (
     <Container>
-      <div></div>
+      <div />
       <span>Carregando...</span>
     </Container>
-  )
+  );
 }
 Loading.defaultProps = {
-  isLoading: false
-}
+  isLoading: false,
+};
 Loading.propTypes = {
-  loading: PropTypes.bool
-}
-export default Loading
+  loading: PropTypes.bool,
+};
+export default Loading;

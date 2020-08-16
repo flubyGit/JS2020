@@ -9,18 +9,20 @@ import Loading from '../../components/Loading';
 
 export default function Pupils() {
   const [pupils, setPupils] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     async function getData() {
+      setIsLoading(true);
       const response = await api.get('pupils');
       const { data } = response;
       setPupils(data);
+      setIsLoading(false);
     }
     getData();
   }, []); // Segundo parametro vazio quer dizer componentDidMount()
   return (
     <Container>
-      <Loading isLoading />
+      <Loading isLoading={isLoading} />
       <h1>Pupils</h1>
       <PupilContainer>
         {pupils.map((pupil) => (
