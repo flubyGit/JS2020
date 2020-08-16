@@ -1,4 +1,22 @@
 import styled from 'styled-components';
+import { primaryColor } from '../../config/colors';
 
-export const Title = styled.h1``;
-export const Paragraph = styled.p``;
+export const Form = styled.form`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  > label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    > input {
+      height: 40px;
+      padding: 0 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      &:focus {
+        border: 1px solid ${primaryColor};
+      }
+    }
+  }
+`;
