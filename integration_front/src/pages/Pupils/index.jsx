@@ -5,6 +5,7 @@ import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
 import { Container } from '../../styles/GlobalStyles';
 import { PupilContainer, ProfilePicture } from './styled';
 import api from '../../services/axios';
+import Loading from '../../components/Loading';
 
 export default function Pupils() {
   const [pupils, setPupils] = useState([]);
@@ -19,6 +20,7 @@ export default function Pupils() {
   }, []); // Segundo parametro vazio quer dizer componentDidMount()
   return (
     <Container>
+      <Loading isLoading />
       <h1>Pupils</h1>
       <PupilContainer>
         {pupils.map((pupil) => (
