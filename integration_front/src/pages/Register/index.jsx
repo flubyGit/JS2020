@@ -1,97 +1,111 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { get } from 'lodash';
-import { Formik, ErrorMessage, Field } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import api from '../../services/axios';
 import history from '../../services/history';
-import { schema } from './validation';
 import Loading from '../../components/Loading';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { id, name: nameStored, email: emailStored } = useSelector(
+    (state) => state.auth.user
+  );
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { registerRequest } = actions;
 
-  async function handleRegisterUser(values) {
-    try {
-      setIsLoading(true);
-      await api.post('users', {
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      });
-      toast.success('Você fez seu cadastro');
-      setIsLoading(false);
+  useEffect(() => {
+    if (!id) return;
+    setName(nameStored);
+    setEmail(emailStored);
+  }, [id, nameStored, emailStored]);
 
-      setTimeout(() => {
-        history.push('/login');
-      }, 3000);
-    } catch (error) {
-      const errors = get(error, 'response.data.errors', []);
-      errors.map((err) => toast.error(err));
-      setIsLoading(false);
+  async function handleRegisterUser(e) {
+    if (name.length < 3) {
+      toast.error('Nome precisa ter 3 caracteres no minino');
     }
+    if (!email) {
+      toast.error('E-mail precisa ser preenchido');
+    }
+    if (!id && password.length < 6) {
+      toast.error('Senha deve conter no mínino 6 caracteres');
+    }
+    e.preventDefault();
+    dispatch(
+      registerRequest({
+        name,
+        email,
+        password,
+        id,
+      })
+    );
+    // try {
+    //   setIsLoading(true);
+    //   await api.post('users', {
+    //     name,
+    //     email,
+    //     password,
+    //   });
+    //   toast.success('Você fez seu cadastro');
+    //   setIsLoading(false);
+
+    //   setTimeout(() => {
+    //     history.push('/login');
+    //   }, 3000);
+    // } catch (error) {
+    //   const errors = get(error, 'response.data.errors', []);
+    //   errors.map((err) => toast.error(err));
+    //   setIsLoading(false);
+    // }
   }
   return (
     <Container>
       <Loading isLoading={isLoading} />
 
-      <h1>Crie sua conta</h1>
-      <Formik
-        enableReinitialize
-        initialValues={{
-          name: '',
-          email: '',
-          password: '',
-        }}
-        onSubmit={(values) => handleRegisterUser(values)}
-        validationSchema={schema}
-      >
-        {({ handleChange, handleSubmit, values }) => (
-          <Form onSubmit={handleSubmit}>
-            <label htmlFor="name">
-              Nome
-              <Field
-                as="input"
-                type="name"
-                name="name"
-                maxLength={255}
-                placeholder="Seu nome"
-                value={values.name}
-                onChange={handleChange}
-              />
-              <ErrorMessage name="name" />
-            </label>
-            <label htmlFor="email">
-              E-mail
-              <Field
-                as="input"
-                type="email"
-                name="email"
-                value={values.email}
-                placeholder="Seu email"
-                onChange={handleChange}
-              />
-              <ErrorMessage name="email" />
-            </label>
-            <label htmlFor="password">
-              Senha
-              <Field
-                as="input"
-                type="password"
-                name="password"
-                maxLength={50}
-                placeholder="Sua senha"
-                value={values.password}
-                onChange={handleChange}
-              />
-              <ErrorMessage name="password" />
-            </label>
-            <button type="submit">Criar minha conta</button>
-          </Form>
-        )}
-      </Formik>
+      <h1>{id ? 'Editar dados' : 'Crie sua conta'}</h1>
+
+      <Form onSubmit={handleRegisterUser}>
+        <label htmlFor="name">
+          Nome
+          <input
+            type="name"
+            name="name"
+            maxLength={255}
+            placeholder="Seu nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label htmlFor="email">
+          E-mail
+          <input
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Seu email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor="password">
+          Senha
+          <input
+            type="password"
+            name="password"
+            maxLength={50}
+            placeholder="Sua senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button type="submit">{id ? 'Salvar' : 'Criar minha conta'}</button>
+      </Form>
     </Container>
   );
 }

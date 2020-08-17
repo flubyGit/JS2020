@@ -6,7 +6,7 @@ import * as types from '../types';
 import api from '../../../services/axios';
 import history from '../../../services/history';
 
-const { LOGIN_REQUEST, PERSIST_REHYDRATE } = types;
+const { LOGIN_REQUEST, PERSIST_REHYDRATE, REGISTER_REQUEST } = types;
 const { loginFailure, loginSuccess } = actions;
 
 function* loginRequest({ payload }) {
@@ -26,7 +26,12 @@ function persistRehydrate({ payload }) {
   if (!token) return;
   api.defaults.headers.Authorization = `Bearer ${token}`;
 }
+function registerRequest({ payload }) {
+  // const { id, name, email, password } = payload;
+  console.log(payload);
+}
 export default all([
   takeLatest(LOGIN_REQUEST, loginRequest),
   takeLatest(PERSIST_REHYDRATE, persistRehydrate),
+  takeLatest(REGISTER_REQUEST, registerRequest),
 ]);
