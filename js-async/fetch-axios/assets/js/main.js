@@ -1,6 +1,11 @@
-fetch('https://api.github.com/users/rocketseat')
-  .then(res => res.json()).then(json => loadElementsInScreen(json))
+// fetch('https://api.github.com/users/rocketseat')
+//   .then(res => res.json()).then(json => loadElementsInScreen(json))
 
+// Axios
+
+axios('https://api.github.com/users/rocketseat')
+  .then(response => loadElementsInScreen(response.data))
+  .catch(res => console.log(res))
 
 function loadElementsInScreen(json) {
   console.log(json)
@@ -21,4 +26,3 @@ function loadElementsInScreen(json) {
   const result = document.querySelector('.resultado')
   result.appendChild(table)
 }
-
