@@ -1,12 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { get } from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
-import api from '../../services/axios';
-import history from '../../services/history';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
 
@@ -46,24 +43,6 @@ export default function Register() {
         id,
       })
     );
-    // try {
-    //   setIsLoading(true);
-    //   await api.post('users', {
-    //     name,
-    //     email,
-    //     password,
-    //   });
-    //   toast.success('Você fez seu cadastro');
-    //   setIsLoading(false);
-
-    //   setTimeout(() => {
-    //     history.push('/login');
-    //   }, 3000);
-    // } catch (error) {
-    //   const errors = get(error, 'response.data.errors', []);
-    //   errors.map((err) => toast.error(err));
-    //   setIsLoading(false);
-    // }
   }
   return (
     <Container>

@@ -1,7 +1,5 @@
 import * as types from '../types';
 
-const { LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST } = types;
-
 const initialState = {
   isLoggedIn: false,
   token: false,
@@ -11,8 +9,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_SUCCESS: {
-      console.log('reducer', action.payload);
+    case types.LOGIN_SUCCESS: {
       const newState = { ...state };
       newState.isLoggedIn = true;
       newState.token = action.payload.token;
@@ -20,13 +17,37 @@ export default function (state = initialState, action) {
       newState.isLoading = false;
       return newState;
     }
-    case LOGIN_FAILURE: {
+    case types.LOGIN_FAILURE: {
       const newState = { ...initialState };
       return newState;
     }
-    case LOGIN_REQUEST: {
+    case types.LOGIN_REQUEST: {
       const newState = { ...state };
       newState.isLoading = true;
+      return newState;
+    }
+    // Register
+    case types.REGISTER_REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+    case types.REGISTER_FAILURE: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_CREATED_SUCCESS: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_UPDATED_SUCCESS: {
+      const newState = { ...state };
+      newState.user.name = action.payload.name;
+      newState.user.email = action.payload.email;
+
+      newState.isLoading = false;
       return newState;
     }
     default:
