@@ -1,4 +1,5 @@
 import * as types from '../types';
+import api from '../../../services/axios';
 
 const initialState = {
   isLoggedIn: false,
@@ -17,40 +18,47 @@ export default function (state = initialState, action) {
       newState.isLoading = false;
       return newState;
     }
+
     case types.LOGIN_FAILURE: {
+      delete api.defaults.headers.Authorization;
       const newState = { ...initialState };
       return newState;
     }
+
     case types.LOGIN_REQUEST: {
       const newState = { ...state };
       newState.isLoading = true;
       return newState;
     }
-    // Register
-    case types.REGISTER_REQUEST: {
+
+    case types.REGISTER_UPDATED_SUCCESS: {
       const newState = { ...state };
-      newState.isLoading = true;
-      return newState;
-    }
-    case types.REGISTER_FAILURE: {
-      const newState = { ...state };
+      newState.user.name = action.payload.name;
+      newState.user.email = action.payload.email;
       newState.isLoading = false;
       return newState;
     }
+
     case types.REGISTER_CREATED_SUCCESS: {
       const newState = { ...state };
       newState.isLoading = false;
       return newState;
     }
-    case types.REGISTER_UPDATED_SUCCESS: {
-      const newState = { ...state };
-      newState.user.name = action.payload.name;
-      newState.user.email = action.payload.email;
 
+    case types.REGISTER_FAILURE: {
+      const newState = { ...state };
       newState.isLoading = false;
       return newState;
     }
-    default:
+
+    case types.REGISTER_REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+
+    default: {
       return state;
+    }
   }
 }
