@@ -19,8 +19,8 @@ function toUpperCase(...args: Array<string>): string {
   return args.toString().toUpperCase().trim();
 }
 
-const upper = toUpperCase('My name is Felipe');
-console.log(upper);
+const upper_ = toUpperCase('My name is Felipe');
+console.log(upper_);
 
 // Retorno pode ser array de tipos
 
@@ -29,3 +29,23 @@ export function toUpperCaseByMap(...args: string[]): Array<string> {
 }
 const upperByMap = toUpperCase('Nice to meet you');
 console.log(upperByMap);
+
+// Aula 2
+
+function multiplyArgs(...args: Array<number>): number {
+  return args.reduce((ac, val) => ac * val, 1);
+}
+
+export function inMyConcatStrings(...args: Array<string>): string {
+  return args.reduce((ac, value) => ac + value);
+}
+
+function toUpperCaseFn(...args: string[]): string[] {
+  return args.map((item) => item.toUpperCase().trim());
+}
+
+const upper = toUpperCaseFn('A', 'B', 'C');
+
+console.log(multiplyArgs(1, 2, 3));
+console.log(inMyConcatStrings('A', 'B', 'C'));
+console.log(upper);

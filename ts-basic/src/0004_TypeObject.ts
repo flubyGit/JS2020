@@ -8,3 +8,15 @@ const objectA = {
   apple: 'Good',
   banana: 'Bad',
 };
+
+const objects: {
+  readonly key: string;
+  keyB: string;
+  [key: string]: unknown;
+} = {
+  key: 'A',
+  keyB: 'B',
+};
+
+objects.keyC = 'Outro valor';
+console.log(objects);

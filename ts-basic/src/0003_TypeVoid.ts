@@ -5,13 +5,15 @@ function noReturn(...args: Array<string>): void {
   console.log(args.join(' '));
 }
 
-const people = {
-  name: 'Luiz',
-  surname: 'Otávio',
+noReturn('Luiz', 'Otávio');
 
+const peoples = {
+  name: 'Felipe',
+  surname: 'André',
   showName(): void {
-    console.log(this.name.concat(this.surname));
+    console.log(this.name, this.surname);
   },
 };
-noReturn('Hi', 'People');
-console.log(people.showName());
+
+peoples.showName();
+export { peoples };

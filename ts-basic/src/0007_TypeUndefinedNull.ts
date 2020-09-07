@@ -26,3 +26,21 @@ const squareOfThoStr = squareOf('');
 if (squareOfTwo === null) {
   console.log('Invalid');
 } else console.log(squareOfTwo);
+
+// Aula 2
+
+function createPerson_(
+  firstName: string,
+  lastName?: string,
+): { firstName: string; lastName?: string } {
+  return {
+    firstName,
+    lastName,
+  };
+}
+
+export function squareOf_(x: unknown) {
+  if (typeof x === 'number') return x * x;
+
+  return null;
+}

@@ -23,3 +23,20 @@ const object1: People_ = {
 console.log(object);
 
 export { object };
+
+// Aula 2
+
+type HaveName = { name: string };
+type HaveSurname = { surname: string };
+type HaveAge = { age: number };
+
+type HaveCombined = HaveName | HaveSurname | HaveAge; // Or
+type Intersection = HaveName & HaveSurname & HaveAge; // And
+
+export const girlfriend: Intersection = {
+  age: 30,
+  name: 'Maria',
+  surname: 'Moreira',
+};
+
+console.log(girlfriend);
