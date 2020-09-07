@@ -16,3 +16,29 @@ console.log(
     { password: 139193818391, username: 'Jennifer' },
   ),
 );
+
+// Aula 2
+
+type User_ = {
+  username: string;
+  password: string;
+};
+type VerifyUser = (user: User_, receivedValues: User_) => boolean;
+
+const VerifiedUsers: VerifyUser = (user, receivedValues) => {
+  return (
+    user.username === receivedValues.username,
+    user.password === receivedValues.password
+  );
+};
+
+const sgbdUser = {
+  username: 'João',
+  password: '12871ahdashaisj1',
+};
+const sentUser = {
+  ...sgbdUser,
+};
+
+const loggedIn = VerifiedUsers(sgbdUser, sentUser);
+console.log(loggedIn);

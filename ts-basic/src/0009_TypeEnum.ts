@@ -1,5 +1,5 @@
 enum Colors {
-  Red, // 0
+  Red,
   Blue, // 1
   Yellow, // 2
   Gray,

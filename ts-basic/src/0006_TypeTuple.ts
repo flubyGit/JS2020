@@ -39,3 +39,9 @@ dataClient2[0] = ['Fruits', 'Animals'];
 
 const imutableArr: ReadonlyArray<string> = ['Luiz', 'Otávio'];
 // ReadonlyArray
+
+const peopleRocketseat: readonly [string, string, string] = [
+  'Diego',
+  'Mayke',
+  'Guilherme',
+];

@@ -1,0 +1,1 @@
+/* configs no tsconfig.json */
