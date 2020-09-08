@@ -18,6 +18,8 @@
     ],
     "rules": {
         "prettier/prettier":"error",
-        "no-console":"off"
+        "no-console":"off",
+        "no-useless-constructor":"off",
+        "no-underscore-dangle":"off"
     }
 }
