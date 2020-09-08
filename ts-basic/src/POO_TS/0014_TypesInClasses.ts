@@ -6,7 +6,9 @@ type TypeCompleteName = {
   completeName(): string;
 };
 
-export class People implements TypePeople, TypeCompleteName {
+type Intersection = TypePeople & TypeCompleteName;
+
+export class People implements Intersection {
   constructor(public name: string, public surname: string) {}
 
   public completeName(): string {
