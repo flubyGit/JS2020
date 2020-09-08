@@ -25,10 +25,12 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": [
-    "eslint --fix",
-    "prettier --write"
-  ],
+  "lint-staged": {
+    ".ts":[
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "ts-node": "^9.0.0"
   }
