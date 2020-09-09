@@ -20,4 +20,6 @@ const people: People = {
   propertiesBody: ["body", "head", "heart"],
 };
 
-console.log(people, "Pessoa");
+if (0 in people) {
+  console.log(people, "Pessoa");
+}
