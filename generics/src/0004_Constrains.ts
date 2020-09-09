@@ -2,7 +2,7 @@
  * Explicação
  * const data = { date: new Date().getFullYear(), now: true }
  *
- * 'O' é um objeto. K é um dos tipos do meu objeto. No caso K seria a chave date e a chave now extendidga
+ * 'O' é um objeto. K é um dos tipos do meu objeto. No caso K seria a chave date e a chave now extends
  * do meu objeto O
  *
  */
