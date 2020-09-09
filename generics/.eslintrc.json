@@ -17,6 +17,17 @@
         "prettier"
     ],
     "rules": {
-      "prettier/prettier":"error"
+      "prettier/prettier":"error",
+      "no-plusplus":"off",
+      "no-unused-vars":"off",
+      "no-console":"off"
+    },
+     "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
+  },
 }
