@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore":["node_modules/","*.log",".git"],
+  "ext":"ts",
+  "watch": ["src"],
+  "exec":"yarn run dev"
+}

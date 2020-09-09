@@ -1,6 +1,6 @@
 // const coresObj = {
 //   vermelho: "red",
-//   green: "verde",
+//   green: "green",
 //   amarelo: "yellow",
 //   azul: "blue",
 //   roxo: "purple",

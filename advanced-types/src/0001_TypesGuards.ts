@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-empty-function */
-
 /**
- * instanceof - Algo foi imstanciado por uma classe?
+ * instanceof - Algo foi instanciado por uma classe?
  * in - Saber se algo está dentro de um objeto, array ou algo
  */
 
@@ -33,6 +30,8 @@ function showName(object: PeopleOrAnimal): void {
   if ("name" in object) console.log(object.name);
   if (object instanceof Student) console.log(object.name);
 }
+
+const student = new Student("");
 
 showName(new Student("João"));
 showName({ type: "Animal", color: "Purple" });

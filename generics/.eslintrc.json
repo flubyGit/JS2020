@@ -17,12 +17,6 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier":"error",
-        "no-console":"off",
-        "no-useless-constructor":"off",
-        "no-underscore-dangle":"off",
-        "max-classes-per-file":"off",
-        "no-unused-vars":"off",
-        "no-empty-function":"off"
+      "prettier/prettier":"error"
     }
 }
